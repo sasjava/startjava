@@ -10,16 +10,15 @@ public class VariablesTheme {
         double ramM = 8069.12; 
         long fileCount = (long) Math.pow(2,63); 
         boolean hasUsb = true; 
-        final String delim = " = ";
         System.out.println("Характеристики ПК:");
-        System.out.println("Процессор\t\t" + delim + "Core " + intel + "3-6006U");
-        System.out.println("Кол-во ядер процессора\t" + delim + coreNum + "\t");
-        System.out.println("Кол-во потоков\t\t" + delim + threadsNum);
-        System.out.println("Частота процессора МГц\t" + delim + freq);
-        System.out.println("Доступная ОП Гб\t\t" + delim + ramG);
-        System.out.println("Доступная ОП Mб\t\t" + delim + ramM);
-        System.out.println("Кол-во файлов на диске\t" + delim + fileCount);
-        System.out.println("Наличие USB\t\t" + delim + hasUsb);
+        System.out.println("Процессор\t\t" + " = " + "Core " + intel + "3-6006U");
+        System.out.println("Кол-во ядер процессора\t" + " = " + coreNum + "\t");
+        System.out.println("Кол-во потоков\t\t" + " = " + threadsNum);
+        System.out.println("Частота процессора МГц\t" + " = " + freq);
+        System.out.println("Доступная ОП Гб\t\t" + " = " + ramG);
+        System.out.println("Доступная ОП Mб\t\t" + " = " + ramM);
+        System.out.println("Кол-во файлов на диске\t" + " = " + fileCount);
+        System.out.println("Наличие USB\t\t" + " = " + hasUsb);
 
         System.out.println("\n2.Расчет стоимости товара со скидкой");
         int penPrice = 100; 
@@ -46,19 +45,30 @@ public class VariablesTheme {
         System.out.println("Тип byte:");
         System.out.println("Первоначальное значение: " + byteMax);
         byteMax++;
-        System.out.println("Значения после инкремента: " + byteMax);
+        System.out.println("Значение после инкремента: " + byteMax);
+        byteMax--;
+        System.out.println("Значение после декремента: " + byteMax);
+
         System.out.println("Тип short:");
         System.out.println("Первоначальное значение: " + shortMax);
         shortMax++;
-        System.out.println("Значения после инкремента: " + shortMax);
+        System.out.println("Значение после инкремента: " + shortMax);
+        shortMax--;
+        System.out.println("Значение после декремента: " + shortMax);
+
         System.out.println("Тип int:");
         System.out.println("Первоначальное значение: " + intMax);
         intMax++;
-        System.out.println("Значения после инкремента: " + intMax);
+        System.out.println("Значение после инкремента: " + intMax);
+        intMax--;
+        System.out.println("Значение после декремента: " + intMax);
+
         System.out.println("Тип long:");
         System.out.println("Первоначальное значение: " + longMax);
         longMax++;
         System.out.println("Значения после инкремента: " + longMax);
+        longMax--;
+        System.out.println("Значения после декремента: " + longMax);
 
         System.out.println("\n5.Перестановка значений переменных");
         int number1 = 87;
@@ -72,13 +82,17 @@ public class VariablesTheme {
 
         System.out.println("б) с помощью арифметических операций");
         System.out.println("исходные значения:\t" + number1 + "\tи\t" + number2);
-        number2 = (number1 += number2) - number2;
+        //number2 = (number1 += number2) - number2;
+        number1 += number2;
+        number2 = number1 - number2;
         number1 = number1 - number2;
         System.out.println("новые значения:\t\t" + number1 + "\tи\t" + number2);
 
         System.out.println("в) с помощью побитовой операции");
         System.out.println("исходные значения:\t" + number1 + "\tи\t" + number2);
-        number1 = number1 ^ number2 ^ (number2 = number1);
+        number1 ^= number2;
+        number2 ^= number1;
+        number1 ^= number2;
         System.out.println("новые значения:\t\t" + number1 + "\tи\t" + number2);
 
         System.out.println("\n6.Вывод символов и их кодов");
@@ -102,10 +116,11 @@ public class VariablesTheme {
         char rightParenthesis = ')';
         System.out.println("     " + slash + backSlash);
         System.out.println("    " + slash + "  " + backSlash);
-        System.out.println("   " + slash + underscore + leftParenthesis + " " + rightParenthesis + backSlash);
+        System.out.println("   " + slash + underscore + leftParenthesis + " " + rightParenthesis + 
+            backSlash);
         System.out.println("  " + slash + "      " + backSlash);
-        System.out.println(" " + slash + underscore + underscore + underscore + underscore + slash + backSlash + 
-                           underscore + underscore + backSlash);
+        System.out.println(" " + slash + underscore + underscore + underscore + underscore + slash + 
+            backSlash + underscore + underscore + backSlash);
 
         System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
         int number3 = 123;
