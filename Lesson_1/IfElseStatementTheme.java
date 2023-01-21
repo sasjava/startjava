@@ -1,4 +1,5 @@
 public class IfElseStatementTheme {
+
     public static void main(String args[]) {
         System.out.println("1.Перевод псевдокода на язык Java");
         byte age = 19;
@@ -28,7 +29,7 @@ public class IfElseStatementTheme {
             System.out.println("His name is unknown");
         }
 
-        System.out.println("\n2.Поиск max и min числа -------------------------------------------");
+        System.out.println("\n2.Поиск max и min числа");
         int number1 = 8;
         int number2 = 9;
         if(number1 > number2) {
@@ -39,30 +40,27 @@ public class IfElseStatementTheme {
             System.out.println("Number " + number1 + " equals " + number2);
         }
 
-        System.out.println("\n3.Проверка числа --------------------------------------------------");
-        int inc3 = 124;
-        if (inc3 == 0) {
-            System.out.println("Number " + inc3 + " is zero");
-        } else if(inc3 % 2 == 0) {
-            System.out.println("Number " + inc3 + " is even");
+        System.out.println("\n3.Проверка числа-------");
+        int number3 = 124;
+        if (number3 == 0) {
+            System.out.println("Number " + number3 + " is zero");
+        } else if(number3 % 2 == 0) {
+            System.out.println("Number " + number3 + " is even");
         } else {
-            System.out.println("Number " + inc3 + " is odd");
+            System.out.println("Number " + number3 + " is odd");
         }
 
-        System.out.println("\n4.Поиск одинаковых цифр в числах ----------------------------------");
-        int inc4a = 341;
-        int inc4b = 789;
-        String str4а = String.valueOf(inc4a);
-        String str4b = String.valueOf(inc4b);
+        System.out.println("\n4.Поиск одинаковых цифр в числах");
+        int numberA = 389;
+        int numberB = 568;
         boolean matchFound = false;
 
-        //char ch4a1 = str4а.toCharArray()[0];
-        System.out.println("Comparing numbers: " + str4а + " and " + str4b + " ");
+        System.out.println("Comparing numbers: " + numberA + " and " + numberB + " ");
         for (int i = 0; i <= 2; i++) {
-            char tmp4a = str4а.toCharArray()[i];
-            char tmp4b = str4b.toCharArray()[i];
-            if(tmp4a == tmp4b) {
-                System.out.println("in both numbers the " + (i + 1) + " number digit is " + tmp4a);
+            int digitA = numberA / (int) Math.pow(10,i) % 10;
+            int digitB = numberB / (int) Math.pow(10,i) % 10;
+            if (digitA == digitB) {
+                System.out.println("in both numbers the " + (i + 1) + " digit is " + digitA);
                 matchFound = true;
             }
         }
@@ -70,43 +68,22 @@ public class IfElseStatementTheme {
             System.out.println("No matches found");
         }
 
-        System.out.println("\n5.Определение символа по его коду ---------------------------------");
-        char inc5 = '\u0057';
-        char[] lowerLetters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
-                               'r','s','t','u','v','w','x','y','z'};
-        char[] upperLetters = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
-                               'R','S','T','U','V','W','X','Y','Z'};
-        char[] digits = {'0','1','2','3','4','5','6','7','8','9'};
-        boolean isFound = false;
-        
-        System.out.println("Symbol: " + inc5);
-        for (char ch:lowerLetters) {
-            if (ch == inc5) {
-                System.out.println("It's LowerCase Letter");
-                isFound = true;
-            }
-        }
-        if(!isFound) {
-            for (char ch:upperLetters) {
-                if (ch == inc5) {
-                    System.out.println("It's UpperCase Letter");
-                    isFound = true;
-                }
-            }
-            if(!isFound) {
-                for (char ch:digits) {
-                    if (ch == inc5) {
-                        System.out.println("It's Digit");
-                        isFound = true;
-                    }
-                }
-                if(!isFound) {
-                    System.out.println("It's unknown symbol");
-                }
-            }
+        System.out.println("\n5.Определение символа по его коду");
+        char char5 = '\u0057';
+        System.out.println("Symbol: " + char5);
+        switch (char5) {
+            case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+                    't','u','v','w','x','y','z' ->
+                System.out.println("Symbol: " + char5);
+            case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S',
+                    'T','U','V','W','X','Y','Z' ->
+                System.out.println("It's UpperCase Letter");
+            case '0','1','2','3','4','5','6','7','8','9' ->
+                System.out.println("It's Digit");
+            default -> System.out.println("It's unknown symbol");
         }
 
-        System.out.println("\n6.Подсчет суммы вклада и начисленных банком % ---------------------");
+        System.out.println("\n6.Подсчет суммы вклада и начисленных банком %");
         float deposit = 300000;
         int percent = 0;
         if (deposit < 100000) {
@@ -122,44 +99,51 @@ public class IfElseStatementTheme {
         System.out.println("Начисленный процент " + percentSum);
         System.out.println("Итоговая сумма " + totalSum);
 
-        System.out.println("\n7.Определение оценки по предметам ---------------------------------");
-        String [] subjects = {"История", "Программирование"};
-        byte [][] results = {{59, 0}, {91, 0}};
-        float averagePercent = 0;
-        float averageGrade = 0;
-        byte i;
+        System.out.println("\n7.Определение оценки по предметам");
+        final String history = "История";
+        final String programming = "Программирование";
+        byte percHistory = 59;
+        byte percProgramming = 91;
+        byte gradeHistory = 0;
+        byte gradeProgramming = 0;
         System.out.println("Оценки по предметам:");
-        for (i = 0; i <= 1; i++) {
-            if (results[i][0] <= 60) {
-                results[i][1] = 2;
-            } else if (results[i][0] > 91) {
-                results[i][1] = 5;
-            } else if (results[i][0] > 73) {
-                results[i][1] = 4;
-            } else if (results[i][0] > 60) {
-                results[i][1] = 3;
-            }
-            System.out.println(results[i][1] + "\t" + subjects[i]);
-            averagePercent += results[i][0];
-            averageGrade += results[i][1];
+        if (percHistory <= 60) {
+            gradeHistory = 2;
+        } else if (percHistory > 91) {
+            gradeHistory = 5;
+        } else if (percHistory > 73) {
+            gradeHistory = 4;
+        } else if (percHistory > 60) {
+            gradeHistory = 3;
         }
-        averagePercent /= i;
-        averageGrade /= i;
+        if (percProgramming <= 60) {
+            gradeProgramming = 2;
+        } else if (percProgramming > 91) {
+            gradeProgramming = 5;
+        } else if (percProgramming > 73) {
+            gradeProgramming = 4;
+        } else if (percProgramming > 60) {
+            gradeProgramming = 3;
+        }
+        System.out.println(gradeHistory + "\t" + history);
+        System.out.println(gradeProgramming + "\t" + programming);
+        float averageGrade = (gradeHistory + gradeProgramming) / 2;
+        float averagePercent = (percHistory + percProgramming) / 2;
         System.out.println("Средний балл оценок по предметам\t" + averageGrade);
         System.out.println("Средний балл % по предметам     \t" + averagePercent);
 
-        System.out.println("\n8.Расчет прибыли за год -------------------------------------------");
+        System.out.println("\n8.Расчет прибыли за год");
         int monthRent = 5000;
         int monthSalesIncome = 13000;
         int monthGoodsCost = 9000;
         int yearProfit = (monthSalesIncome - monthRent - monthGoodsCost) * 12;
-        String yearProfitStr = Integer.toString(yearProfit);
         if (yearProfit > 0) {
-            yearProfitStr = "+" + yearProfitStr;
+            System.out.println("Прибыль за год: " + "+" + yearProfit);
+        } else {
+            System.out.println("Прибыль за год: " + yearProfit);
         } 
-        System.out.println("Прибыль за год: " + yearProfitStr);
 
-        System.out.println("\n9.Подсчет количества банкнот --------------------------------------");
+        System.out.println("\n9.Подсчет количества банкнот");
         int requiredSum = 567;
         int numATM100 = 1;
         int numATM10 = 2;

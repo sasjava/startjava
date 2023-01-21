@@ -85,7 +85,7 @@ public class VariablesTheme {
         //number2 = (number1 += number2) - number2;
         number1 += number2;
         number2 = number1 - number2;
-        number1 = number1 - number2;
+        number1 -= number2;
         System.out.println("новые значения:\t\t" + number1 + "\tи\t" + number2);
 
         System.out.println("в) с помощью побитовой операции");
@@ -116,11 +116,11 @@ public class VariablesTheme {
         char rightParenthesis = ')';
         System.out.println("     " + slash + backSlash);
         System.out.println("    " + slash + "  " + backSlash);
-        System.out.println("   " + slash + underscore + leftParenthesis + " " + rightParenthesis + 
-            backSlash);
+        System.out.println("   " + slash + underscore + leftParenthesis + " " + 
+                rightParenthesis + backSlash);
         System.out.println("  " + slash + "      " + backSlash);
         System.out.println(" " + slash + underscore + underscore + underscore + underscore + slash + 
-            backSlash + underscore + underscore + backSlash);
+                backSlash + underscore + underscore + backSlash);
 
         System.out.println("\n8.Вывод количества сотен, десятков и единиц числа");
         int number3 = 123;
