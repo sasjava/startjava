@@ -4,19 +4,19 @@ public class CyclesTheme {
         System.out.println("1.Подсчет суммы четных и нечетных чисел");
         int startRange = -10;
         int endRange = 21;
-        int evenCount = 0;
-        int oddCount = 0;
+        int evenSum = 0;
+        int oddSum = 0;
         int counter = startRange;
         while(counter <= endRange) {
             if(counter % 2 == 0) {
-                evenCount += counter;
+                evenSum += counter;
             } else {
-                oddCount += counter; 
+                oddSum += counter; 
             }
             counter++;
         }
         System.out.println("в промежутке [" + startRange + "," + endRange + "] сумма четных чисел = " + 
-                evenCount + ", а нечетных = " + oddCount);
+                evenSum + ", а нечетных = " + oddSum);
 
         System.out.println("\n2.Вывод чисел в интервале (min и max) в порядке убывания");
         int number3 = 10;
@@ -105,6 +105,8 @@ public class CyclesTheme {
                 count = 1;
             }
         }
+        System.out.println();
+
         length = 5;
         count = 1;
         while (length > 0) {
@@ -116,31 +118,27 @@ public class CyclesTheme {
                 length--;
             }
         }
+        System.out.println();
+
         length = 1;
         count = 1;
+        int countRow = 1;
         do {
-            System.out.print('$');
-            count++;
-            if (count > length) {
-                System.out.println();
-                count = 1;
+            do {
+                System.out.print('$');
+                count++;
+            } while (count <= length);
+            System.out.println();
+            count = 1;
+            if (countRow < 3) {
                 length++;
-            }
-        } while (length <= 3);
-        length = 2;
-        count = 1;
-        do {
-            System.out.print('$');
-            count++;
-            if (count > length) {
-                System.out.println();
-                count = 1;
+            } else {
                 length--;
             }
-        } while (length > 0);
+            countRow++;
+        } while (countRow < 6);
 
         System.out.println("\n7.Отображение ASCII-символов");
-        char ch = 'i'; 
         System.out.printf("%6s%6s%n", "Dec", "Char");
         for (int i = 1; i <= 127; i++) {
             boolean check1 = i < (int) '0' && i % 2 != 0;
@@ -151,23 +149,16 @@ public class CyclesTheme {
         }
 
         System.out.println("\n8.Проверка, является ли число палиндромом");
-        int numberForward = 1234321;
-        int numberBackward = 0;
-        int decimalPlace = 1;
-        int tmp = numberForward;
-        while (tmp > 0) {
-            tmp /= 10;
-            decimalPlace *= 10;
+        int number = 1234321;
+        int reverse = 0;
+        int copyNumber = number;
+        while (copyNumber > 0) {
+            int digit = copyNumber % 10;
+            reverse = reverse * 10 + digit;
+            copyNumber /= 10;
         }
-        tmp = numberForward;
-        while (tmp > 0) {
-            int digit = tmp % 10;
-            decimalPlace /= 10; 
-            numberBackward = numberBackward + digit * decimalPlace;
-            tmp /= 10;
-        }
-        System.out.print("Число " + numberForward);
-        if (numberForward != numberBackward) {
+        System.out.print("Число " + number);
+        if (number != reverse) {
             System.out.print(" не");
         }
         System.out.println(" является палиндромом");
@@ -176,10 +167,10 @@ public class CyclesTheme {
         int number9 = 123312;
         int sumLeft = 0;
         int sumRight = 0;
-        tmp = number9;
+        int copyNumber9 = number9;
         for (int i = 1; i <= 6; i++) {
-            int digit = tmp % 10;
-            tmp /= 10;
+            int digit = copyNumber9 % 10;
+            copyNumber9 /= 10;
             if (i <= 3) {
                 sumRight += digit;
             } else {
