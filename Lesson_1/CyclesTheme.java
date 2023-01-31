@@ -4,19 +4,19 @@ public class CyclesTheme {
         System.out.println("1.Подсчет суммы четных и нечетных чисел");
         int startRange = -10;
         int endRange = 21;
-        int evenSum = 0;
-        int oddSum = 0;
+        int sumEven = 0;
+        int sumOdd = 0;
         int counter = startRange;
         while(counter <= endRange) {
             if(counter % 2 == 0) {
-                evenSum += counter;
+                sumEven += counter;
             } else {
-                oddSum += counter; 
+                sumOdd += counter; 
             }
             counter++;
         }
         System.out.println("в промежутке [" + startRange + "," + endRange + "] сумма четных чисел = " + 
-                evenSum + ", а нечетных = " + oddSum);
+                sumEven + ", а нечетных = " + sumOdd);
 
         System.out.println("\n2.Вывод чисел в интервале (min и max) в порядке убывания");
         int number3 = 10;
@@ -76,8 +76,8 @@ public class CyclesTheme {
         System.out.print("Число " + number7);
         while (number7 > 0) {
             int digit = number7 % 10; 
-            number7 /= 10;
-            if (digit == 2) {
+            number7 /= 10
+;            if (digit == 2) {
                 countTwos++;
             }
         }

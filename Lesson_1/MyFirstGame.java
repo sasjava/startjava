@@ -4,21 +4,21 @@ public class MyFirstGame {
         int number = 5;
         int min = 1;
         int max = 100;
-        int variant = max / 2;
+        int playerNumber = max / 2;
         int offset = max / 2;
         int count = 0;
-        while (number != variant) {
+        while (number != playerNumber) {
             count++;
             if (offset > 1) {
                 offset /= 2;
             }
-            System.out.print("число " + variant);
-            if (variant > number) {
+            System.out.print("число " + playerNumber);
+            if (playerNumber > number) {
                 System.out.print(" больше");
-                variant -= offset;
-            } else if (variant < number) {
+                playerNumber -= offset;
+            } else if (playerNumber < number) {
                 System.out.print(" меньше");
-                variant += offset;
+                playerNumber += offset;
             }
             System.out.println(" того, что загадал компьютер");
         }
