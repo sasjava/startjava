@@ -1,4 +1,4 @@
-public class JaegerTest{
+public class JaegerTest {
     public static void main(String[] args) {
         Jaeger jaegerGipsyDanger = new Jaeger();
         jaegerGipsyDanger.setNickName("Yancy"); 
@@ -11,7 +11,7 @@ public class JaegerTest{
         jaegerGipsyDanger.setArmor(6);
 
         Jaeger jaegerBracerPhoenix = new Jaeger("The Shanghai Shield", "Bracer Phoenix1", 
-            "Mark-5", "UK", 70.7f, 2.1f, 8, 9 );
+                "Mark-5", "UK", 70.7f, 2.1f, 8, 9 );
 
         jaegerGipsyDanger.printCharacteristics();
         jaegerBracerPhoenix.printCharacteristics();

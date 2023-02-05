@@ -2,36 +2,43 @@ public class Calculator {
     private int number1 ;
     private int number2;
     private char sign;
-    private int result = 0; 
+    private int result; 
 
     public void setNumber1(int number) {
         number1 = number;
     }
-    public void setNumber2(int number) {
-        number2 = number;
-    }
-    public boolean setSign(char sign) {
-        switch(sign) {
-            case '+', '-', '*', '/', '%', '^':
-                this.sign = sign;
-                return true;
-            default:
-                return false;
-        }
-    }
+
     public int getNumber1() {
         return number1;
     }
+
+    public void setNumber2(int number) {
+        number2 = number;
+    }
+
     public int getNumber2() {
         return number2;
     }
+
+    public boolean setSign(char sign) {
+        if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '%' || 
+                sign == '^') {
+            this.sign = sign;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public char getSign() {
         return sign;
     }
+
     public int getResult() {
         return result;
     }
-    public boolean run() {
+
+    public int calc() {
         switch(sign) { 
             case '+':
                 result = number1 + number2;
@@ -58,8 +65,8 @@ public class Calculator {
                 }
                 break;
             default:
-                return false;
+                return 0;
         }
-        return true;
+        return result;
     }
 }
