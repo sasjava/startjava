@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
+    
     private Player player1;
     private Player player2;
     private int secretNum;
@@ -13,34 +14,33 @@ public class GuessNumber {
 
     public void play() {
         Scanner scanner = new Scanner(System.in);
-        randomNum();
-        Player playerCurrent = player2;
+        doRandomNum();
+        Player currentPlayer = player1;
         do {
-            playerCurrent = switchPlayer(playerCurrent);
-            System.out.print(playerCurrent.getName() + ", введите число от 1 до 100: ");
-            playerCurrent.setNumber(scanner.nextInt());
+            System.out.print(currentPlayer.getName() + ", введите число от 1 до 100: ");
+            currentPlayer.setNumber(scanner.nextInt());
             
-            if (secretNum < playerCurrent.getNumber()) {
+            if (secretNum < currentPlayer.getNumber()) {
                 System.out.println("Это число больше загаданного");
-            } else if(secretNum > playerCurrent.getNumber()) {
+            } else if(secretNum > currentPlayer.getNumber()) {
                 System.out.println("Это число меньше загаданного");
+            } else {
+                break;
             }
-        } while (secretNum != playerCurrent.getNumber());
+            currentPlayer = selectNextPlayer(currentPlayer);
+        } while (true);
 
-        System.out.print("Игрок " + playerCurrent.getName() + " угадал число!!!");
+        System.out.print("Игрок " + currentPlayer.getName() + " угадал число!!!");
         secretNum = 0;
     }
 
-    private Player switchPlayer(Player player) {
-        if (player == player1) {
-            return player2;
-        } 
-        return player1;
-    }
-
-    private void randomNum() {
+    private void doRandomNum() {
         Random random = new Random();
         secretNum = random.nextInt(100) + 1;
-        System.out.println("secretNum = " + secretNum);
+        //System.out.println("secretNum = " + secretNum);
+    }
+
+    private Player selectNextPlayer(Player player) {
+        return (player == player1) ? player2 : player1;
     }
 }
