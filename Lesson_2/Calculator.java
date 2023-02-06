@@ -2,7 +2,6 @@ public class Calculator {
     private int number1 ;
     private int number2;
     private char sign;
-    private int result; 
 
     public void setNumber1(int number) {
         number1 = number;
@@ -25,48 +24,33 @@ public class Calculator {
                 sign == '^') {
             this.sign = sign;
             return true;
-        } else {
-            return false;
-        }
+        } 
+        return false;
     }
 
     public char getSign() {
         return sign;
     }
 
-    public int getResult() {
-        return result;
-    }
-
     public int calc() {
+        int result = 1;
         switch(sign) { 
             case '+':
-                result = number1 + number2;
-                break;
+                return number1 + number2;
             case '-' :
-                result = number1 - number2;
-                break;
+                return number1 - number2;
             case '*' : 
-                result = number1 * number2;
-                break;
+                return number1 * number2;
             case '/' : 
-                result = number1 / number2;
-                break;
+                return number1 / number2;
             case '%' : 
-                result = number1 % number2;
-                break;
+                return number1 % number2;
             case '^' : 
-                for (int i = 0; i <= number2; i++) {
-                    if (i == 0) {
-                        result = 1;
-                    } else {
-                        result *= number1;
-                    }
+                for (int i = 0; i < number2; i++) {
+                    result *= number1;
                 }
-                break;
-            default:
-                return 0;
+                return result;
         }
-        return result;
+        return 0;
     }
 }

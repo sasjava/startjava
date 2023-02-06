@@ -8,8 +8,7 @@ public class Jaeger {
     private int strength;
     private int armor;
 
-    public Jaeger() {
-    }
+    public Jaeger() {}
 
     public Jaeger(String nickName, String modelName, String mark, String origin, float height,
             float weight, int strength, int armor) {
@@ -46,6 +45,7 @@ public class Jaeger {
     public String getModelName() {
         return modelName;
     }
+
     public void setMark(String mark) {
         this.mark = mark;
     }
@@ -69,6 +69,7 @@ public class Jaeger {
     public float getHeight() {
         return height;
     }
+
     public void setWeight(float weight) {
         this.weight = weight;
     }
@@ -76,6 +77,7 @@ public class Jaeger {
     public float getWeight() {
         return weight;
     }
+
     public void setStrength(int strength) {
         this.strength = strength;
     }
@@ -83,6 +85,7 @@ public class Jaeger {
     public int getStrength() {
         return strength;
     }
+
     public void setArmor(int armor) {
         this.armor = armor;
     }

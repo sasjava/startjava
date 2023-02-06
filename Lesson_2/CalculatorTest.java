@@ -16,6 +16,7 @@ public class CalculatorTest {
 
                 System.out.print("Введите 2 число: ");
                 calculator.setNumber2(scanner.nextInt());
+                
                 System.out.println(calculator.getNumber1() + " " + calculator.getSign() + " " 
                         + calculator.getNumber2() + " = " + calculator.calc());
             }
