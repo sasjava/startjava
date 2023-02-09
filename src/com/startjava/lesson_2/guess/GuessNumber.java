@@ -1,3 +1,4 @@
+package com.startjava.lesson_2.guess;
 import java.util.Random;
 import java.util.Scanner;
 
