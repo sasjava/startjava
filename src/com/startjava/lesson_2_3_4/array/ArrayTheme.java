@@ -125,7 +125,6 @@ public class ArrayTheme {
     private static void shiftArr() {
         System.out.println("6. Сдвиг элементов массива");
         String[] srcArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        int[][] ranges = new int[2][2];
         int lenResult = 0;
         for (String itemArr: srcArr ) {
             if (!itemArr.isBlank()) {
@@ -219,12 +218,6 @@ public class ArrayTheme {
                 System.out.println();
             }
             System.out.printf("%8.3f", arr[i]);
-        }
-        System.out.println();
-    }
-    private static void printStrArr(String[] arr) {
-        for (String itemArr : arr) {
-            System.out.printf("%5s", itemArr);
         }
         System.out.println();
     }
