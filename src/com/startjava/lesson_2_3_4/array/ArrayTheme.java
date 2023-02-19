@@ -51,6 +51,7 @@ public class ArrayTheme {
                 System.out.print(intArr[i]);
             }
         }
+        System.out.println();
     }
 
     private static void nullingArrayItems() {
