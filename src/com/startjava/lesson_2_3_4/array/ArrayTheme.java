@@ -18,8 +18,8 @@ public class ArrayTheme {
     private static void reversArr() {
         System.out.println("1. Реверс значений массива");
         int[] intArr = {1, 2, 3, 4, 5, 6, 7}; //{6, 4, 7, 1, 3, 2, 5};
-        int len = intArr.length;
         printIntArr(intArr);
+        int len = intArr.length;
         for (int i = 0; i < len; i++) {
             len--;
             int tmp = intArr[i];
