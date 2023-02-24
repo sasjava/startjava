@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class ArrayTheme {
     public static void main(String[] args) {
-        reversArr();
+        reverseArr();
         multiplyArrItems();
         nullingArrItems();
         displayAlphabetReversStairs();
@@ -13,7 +13,7 @@ public class ArrayTheme {
         copyNotBlankArrItems();
     }
 
-    private static void reversArr() {
+    private static void reverseArr() {
         System.out.println("1. Реверс значений массива");
         int[] intArr = {1, 2, 3, 4, 5, 6, 7}; //{6, 4, 7, 1, 3, 2, 5};
         printIntArr(intArr);
@@ -33,13 +33,13 @@ public class ArrayTheme {
         for (int i = 0; i < intArr.length; i++) {
             intArr[i] = i;
         }
-        int result = 1;
 
+        int result = 1;
         for (int i = 1; i < intArr.length - 1; i++) {
             result *= intArr[i];
-            System.out.print(((result > 1) ? " * " : "" ) + intArr[i]);
+            System.out.print(intArr[i] + ((i == intArr.length - 2) ? " = " + result : " * "));
         }
-        System.out.println(" = " + result + "\n[0] = " + intArr[0] + "\n" + "[9] = " + intArr[9]);
+        System.out.println("\n[0] = " + intArr[0] + "\n" + "[9] = " + intArr[9]);
     }
 
     private static void nullingArrItems() {
@@ -48,7 +48,7 @@ public class ArrayTheme {
         int len = floatArr.length;
         Random random = new Random();
         for (int i = 0; i < len; i++) {
-            floatArr[i] = random.nextFloat() ;
+            floatArr[i] = random.nextFloat();
         }
         System.out.println("Исходный массив:");
         printFloatArr(floatArr);
@@ -75,7 +75,7 @@ public class ArrayTheme {
         for (int i = 0; i < len; i++) {
             alphabet[i] = (char) ('A' + i);
         }
-        printAlphabetArrStairs(alphabet);
+        printAlphabetStairs(alphabet);
     }
 
     private static void generateUniqueNumbers() {
@@ -86,10 +86,10 @@ public class ArrayTheme {
             int number;
             do {
                 number = random.nextInt(40) + 60;
-            } while (number == 0 || !isUnique(uniqueNumbers, number));
+            } while (!isUnique(uniqueNumbers, number));
             uniqueNumbers[i] = number;
         }
-        sortIntArr(uniqueNumbers);
+        sort(uniqueNumbers);
         System.out.println("Отсортированный массив");
         printIntArr(uniqueNumbers, 10);
     }
@@ -98,7 +98,7 @@ public class ArrayTheme {
         System.out.println("\n6. Сдвиг элементов массива");
         String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         int countNotBlank = 0;
-        for (String item: srcStrings) {
+        for (String item : srcStrings) {
             if (!item.isBlank()) {
                 countNotBlank++;
             }
@@ -145,13 +145,13 @@ public class ArrayTheme {
         System.out.println();
     }
 
-    private static void printAlphabetArrStairs(char[] arr) {
+    private static void printAlphabetStairs(char[] arr) {
         for (int i = 1; i <= arr.length; i++) {
             printAlphabetArrRevers(arr, i);
         }
     }
 
-    private static void sortIntArr(int[] arr) {
+    private static void sort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int minVal = arr[i];
             int minValIndex = 0;
@@ -183,7 +183,7 @@ public class ArrayTheme {
             }
             System.out.printf("%3s", arr[i]);
         }
-        System.out.println("");
+        System.out.println();
     }
 
     private static void printFloatArr(float[] arr) {
