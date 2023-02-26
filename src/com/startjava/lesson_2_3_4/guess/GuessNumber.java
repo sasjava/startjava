@@ -17,7 +17,6 @@ public class GuessNumber {
         Scanner scanner = new Scanner(System.in);
         doRandomNum();
         Player currentPlayer = players[0];
-//        int currentNumber = 0;
         boolean isEqual;
         do {
             System.out.print(currentPlayer.getName() + ", введите число от 1 до 100: ");
@@ -49,7 +48,7 @@ public class GuessNumber {
     private void doRandomNum() {
         Random random = new Random();
         secretNum = random.nextInt(100) + 1;
-        System.out.println("secretNum = " + secretNum);
+//        System.out.println("secretNum = " + secretNum);
     }
 
     private boolean checkNumber(int number) {
