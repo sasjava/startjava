@@ -1,58 +1,28 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int number1 ;
-    private int number2;
-    private char sign;
+    private String[] mathExpression;
 
-    public void setNumber1(int number) {
-        number1 = number;
+    public void setMathExpression(String mathExpressionStr) {
+        mathExpression = mathExpressionStr.split(" ");
     }
 
-    public int getNumber1() {
-        return number1;
-    }
-
-    public void setNumber2(int number) {
-        number2 = number;
-    }
-
-    public int getNumber2() {
-        return number2;
-    }
-
-    public boolean setSign(char sign) {
-        if (sign == '+' || sign == '-' || sign == '*' || sign == '/' || sign == '%' || 
-                sign == '^') {
-            this.sign = sign;
-            return true;
-        } 
-        return false;
-    }
-
-    public char getSign() {
-        return sign;
-    }
-
-    public int calc() {
-        int result = 1;
-        switch(sign) { 
-            case '+':
-                return number1 + number2;
-            case '-' :
-                return number1 - number2;
-            case '*' : 
-                return number1 * number2;
-            case '/' : 
-                return number1 / number2;
-            case '%' : 
-                return number1 % number2;
-            case '^' : 
-                for (int i = 0; i < number2; i++) {
-                    result *= number1;
-                }
-                return result;
+    public double calc() {
+        if (mathExpression.length != 3) {
+            return 0;
         }
-        return 0;
+        int num1 = Integer.parseInt(mathExpression[0]);
+        int num2 = Integer.parseInt(mathExpression[2]);
+        char sign = mathExpression[1].charAt(0);
+
+        return switch (sign) {
+            case '+' -> Math.addExact(num1, num2);
+            case '-' -> Math.subtractExact(num1, num2);
+            case '*' -> Math.multiplyExact(num1, num2);
+            case '/' -> (double) num1 / num2;
+            case '%' -> num1 % num2;
+            case '^' -> Math.pow(num1, num2);
+            default -> 0;
+        };
     }
 }

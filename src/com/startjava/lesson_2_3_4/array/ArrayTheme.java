@@ -19,9 +19,8 @@ public class ArrayTheme {
         printIntArr(intArr);
         int len = intArr.length;
         for (int i = 0; i < len; i++) {
-            len--;
             int tmp = intArr[i];
-            intArr[i] = intArr[len];
+            intArr[i] = intArr[--len];
             intArr[len] = tmp;
         }
         printIntArr(intArr);
