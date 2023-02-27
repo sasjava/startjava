@@ -1,4 +1,5 @@
 package com.startjava.lesson_2_3_4.calculator;
+
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -7,16 +8,25 @@ public class CalculatorTest {
         System.out.print("Введите математическое выражение: ");
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        calculator.setMathExpression(scanner.nextLine());
-        double result = calculator.calc();
+        double result = calculator.calc(scanner.nextLine());
 
-        DecimalFormat dF = new DecimalFormat( "#.##" );
+        DecimalFormat dF = new DecimalFormat("#.##");
         System.out.println(dF.format(result));
 
+        decide_continue_end();
+    }
+
+    private static void decide_continue_end() {
         System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+        Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
         if (answer.equals("yes")) {
+            String[] args = new String[0];
             CalculatorTest.main(args);
+        } else if (answer.equals("no")) {
+            return;
+        } else {
+            decide_continue_end();
         }
     }
 }

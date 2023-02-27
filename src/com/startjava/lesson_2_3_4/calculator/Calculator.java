@@ -3,11 +3,8 @@ package com.startjava.lesson_2_3_4.calculator;
 public class Calculator {
     private String[] mathExpression;
 
-    public void setMathExpression(String mathExpressionStr) {
+    public double calc(String mathExpressionStr) {
         mathExpression = mathExpressionStr.split(" ");
-    }
-
-    public double calc() {
         if (mathExpression.length != 3) {
             return 0;
         }
