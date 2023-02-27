@@ -13,10 +13,10 @@ public class CalculatorTest {
         DecimalFormat dF = new DecimalFormat("#.##");
         System.out.println(dF.format(result));
 
-        decide_continue_end();
+        decideContinueEnd();
     }
 
-    private static void decide_continue_end() {
+    private static void decideContinueEnd() {
         System.out.print("Хотите продолжить вычисления? [yes/no]: ");
         Scanner scanner = new Scanner(System.in);
         String answer = scanner.nextLine();
@@ -26,7 +26,7 @@ public class CalculatorTest {
         } else if (answer.equals("no")) {
             return;
         } else {
-            decide_continue_end();
+            decideContinueEnd();
         }
     }
 }
