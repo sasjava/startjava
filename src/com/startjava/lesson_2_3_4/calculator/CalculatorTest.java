@@ -7,12 +7,13 @@ public class CalculatorTest {
     public static void main(String[] args) {
         System.out.print("Введите математическое выражение: ");
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
-        double result = calculator.calc(scanner.nextLine());
-
-        DecimalFormat dF = new DecimalFormat("#.##");
-        System.out.println(dF.format(result));
-
+        try {
+            double result = Calculator.calc(scanner.nextLine());
+            DecimalFormat dF = new DecimalFormat("#.##");
+            System.out.println(dF.format(result));
+        } catch (RuntimeException exc) {
+            System.out.println("Введено некорректное выражение");
+        }
         decideContinueEnd();
     }
 
