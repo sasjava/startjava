@@ -1,5 +1,6 @@
 CREATE DATABASE Jaegers;
 \c jaegers;
+DROP TABLE IF EXISTS Jaegers;
 CREATE TABLE jaegers(
 id serial, 
 modelName text, 
