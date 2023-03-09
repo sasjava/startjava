@@ -1,40 +1,33 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Player {
+    public static final int TRIES_NUMBER = 5;
     private final String name;
     private final int[] numbers;
     private int score;
+    private int currentTryNum = 0;
 
     public Player(String name) {
         this.name = name;
-        numbers = new int[GuessNumberTest.TRIES_NUMBER];
+        numbers = new int[TRIES_NUMBER];
     }
 
     public String getName() {
         return name;
     }
 
-    public void setNumber(int number) {
-        if (number < GuessNumberTest.MIN_NUMBER || number > GuessNumberTest.MAX_NUMBER) {
-            System.out.println("Вы ввели неправильное число!");
-            throw new RuntimeException() ;
-        };
-        int i = getCurrentTryNum();
-        if (i >= 0 && i < numbers.length) {
-            numbers[i] = number;
-        }
+    public int getCurrentTryNum() {
+        return currentTryNum;
     }
 
     public int[] getNumbers() {
-        int i = getCurrentTryNum();
-        return Arrays.copyOf(numbers, (i >= 0) ? i : numbers.length);
+        return Arrays.copyOf(numbers, (currentTryNum >= 0) ? currentTryNum : numbers.length);
     }
 
     public int getNumber() {
-        int i = getCurrentTryNum();
+        int i = currentTryNum;
         i = (i > 0) ? i - 1 : (i < 0) ? numbers.length - 1 : i;
         return numbers[i];
     }
@@ -47,34 +40,29 @@ public class Player {
         return score;
     }
 
-    public void addScore() {
+    public void upScore() {
         score++;
     }
 
-    public int getCurrentTryNum() {
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] == 0) {
-                return i;
-            }
+    public void addNumber(int number) {
+        if (number < GuessNumber.MIN_NUMBER || number > GuessNumber.MAX_NUMBER) {
+            throw new RuntimeException("Вы ввели неправильное число!") ;
         }
-        return -1;
-    }
-
-    public void input_number() {
-        System.out.print(getName() + ", введите число от " + GuessNumberTest.MIN_NUMBER +
-                " до " + GuessNumberTest.MAX_NUMBER + ": ");
-        Scanner scanner = new Scanner(System.in);
-        try {
-            setNumber(scanner.nextInt());
-        } catch (RuntimeException exc) {
-            input_number();
+        int i = currentTryNum;
+        if (i >= 0 && i < numbers.length) {
+            numbers[i] = number;
+            currentTryNum++;
         }
     }
 
     public void clear_numbers() {
-        int i = getCurrentTryNum();
-        if (i > 0) {
-            Arrays.fill(numbers, 0, i, 0);
+        if (currentTryNum > 0) {
+            Arrays.fill(numbers, 0, currentTryNum, 0);
         }
+        currentTryNum = 0;
+    }
+
+    public boolean isLastTry() {
+        return (currentTryNum == TRIES_NUMBER);
     }
 }

@@ -1,8 +1,12 @@
 package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class GuessNumber {
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 100;
+    public static final int ROUNDS_NUMBER = 3;
     private final Player[] players;
     private int secretNum;
     private int roundNum;
@@ -12,7 +16,7 @@ public class GuessNumber {
     }
 
     public void play() {
-        System.out.println("\nУ каждого игрока по " + GuessNumberTest.TRIES_NUMBER + " попыток");
+        System.out.println("\nУ каждого игрока по " + Player.TRIES_NUMBER + " попыток");
         drawLot();
         playRound();
     }
@@ -23,15 +27,15 @@ public class GuessNumber {
         int currentNum = 0;
         boolean isEqual;
         do {
-            players[currentNum].input_number();
+            input_number(currentNum);
             isEqual = checkNumber(players[currentNum].getNumber());
             if (isEqual) {
-                players[currentNum].addScore();
+                players[currentNum].upScore();
                 break;
             } else {
                 currentNum = nextPlayerNum(currentNum);
             }
-        } while (players[currentNum].getCurrentTryNum() >= 0);
+        } while (!players[currentNum].isLastTry());
 
         System.out.println((isEqual) ? "Игрок " + players[currentNum].getName() + " угадал число " + secretNum +
                 " c " + players[currentNum].getCurrentTryNum() + " попытки!!!\n"
@@ -40,7 +44,7 @@ public class GuessNumber {
         for (Player player : players) {
             printPlayerNumbers(player);
         }
-        if (roundNum == GuessNumberTest.ROUNDS_NUMBER) {
+        if (roundNum == ROUNDS_NUMBER) {
             Player winner = getWinner();
             System.out.printf("По результатам " + roundNum + " раундов %s\n",
                     (winner != null) ? "победил игрок " + winner.getName() : "победитель не выявлен");
@@ -50,7 +54,7 @@ public class GuessNumber {
     }
 
     private void initializeRound() {
-        roundNum = (roundNum < GuessNumberTest.ROUNDS_NUMBER) ? roundNum + 1 : 1;
+        roundNum = (roundNum < ROUNDS_NUMBER) ? roundNum + 1 : 1;
         for (Player player : players) {
             player.clear_numbers();
             if (roundNum == 1) {
@@ -73,7 +77,7 @@ public class GuessNumber {
 
     private void doRandomNum() {
         Random random = new Random();
-        secretNum = random.nextInt(GuessNumberTest.MAX_NUMBER) + GuessNumberTest.MIN_NUMBER;
+        secretNum = random.nextInt(MAX_NUMBER) + MIN_NUMBER;
         System.out.println("secretNum = " + secretNum);
     }
 
@@ -100,7 +104,7 @@ public class GuessNumber {
     private Player getWinner() {
         int maxScore = players[0].getScore();
         for (int i = 1; i < players.length; i++) {
-            maxScore = (players[i].getScore() > maxScore) ? players[i].getScore() : maxScore;
+            maxScore = Math.max(players[i].getScore(), maxScore);
         }
         Player winner = null;
         int count = 0;
@@ -114,5 +118,16 @@ public class GuessNumber {
             winner = null;
         }
         return winner;
+    }
+
+    private void input_number(int index) {
+        System.out.print(players[index].getName() + ", введите число от " + MIN_NUMBER +
+                " до " + MAX_NUMBER + ": ");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            players[index].addNumber(scanner.nextInt());
+        } catch (RuntimeException exc) {
+            input_number(index);
+        }
     }
 }
